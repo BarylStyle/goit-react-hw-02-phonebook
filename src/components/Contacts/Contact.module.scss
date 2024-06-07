@@ -1,0 +1,36 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: .75rem;
+    font-size: 1.5rem;
+    border: 1px solid slategray;
+    border-radius: 1rem;
+
+    input, button {
+    font-size: inherit;
+    }
+}
+
+.list {
+    font-size: 1.5rem;
+}
+.deleteButton {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #ff1a1a;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
