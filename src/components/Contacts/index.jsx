@@ -22,13 +22,19 @@ export default class Contacts extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault();
-    const { name, contacts } = this.state;
+    const { name, number, contacts } = this.state;
     const isDuplicate = contacts.some(
       (contact) => contact.name.toLowerCase() === name.toLowerCase()
     );
 
     if (isDuplicate) {
       alert(`Contact with the name "${name}" already exists.🫣`);
+      return;
+    }
+    const isValidNumber = /^[0-9]+$/.test(number);
+
+    if (!isValidNumber) {
+      alert("The phone number must contain only digits.");
       return;
     }
 
@@ -39,7 +45,7 @@ export default class Contacts extends Component {
         name: this.state.name,
         number: this.state.number,
       });
-      return { contacts: list, name: "", number: "" }; 
+      return { contacts: list, name: "", number: "" };
     });
   };
 
@@ -73,18 +79,22 @@ export default class Contacts extends Component {
             required
             value={this.state.number}
             onChange={this.handleChange}
+            pattern="[0-9]*"
+            title="The phone number must contain only digits."
           />
           <button type="submit">Add contact</button>
         </form>
         <h1>Contacts</h1>
-        <label htmlFor={searchId}>Find contact</label>
-        <input
-          type="text"
-          id={searchId}
-          name="filter"
-          value={this.state.filter}
-          onChange={this.handleChange}
-        />
+        <form className={styles.searchForm}>
+          <label htmlFor={searchId}>Find contact</label>
+          <input
+            type="text"
+            id={searchId}
+            name="filter"
+            value={this.state.filter}
+            onChange={this.handleChange}
+          />
+        </form>
         <ul className={styles.list}>
           {this.state.contacts
             .filter((el) =>
@@ -93,8 +103,9 @@ export default class Contacts extends Component {
             .map((contact) => (
               <li key={contact.id}>
                 {contact.name} - {contact.number}
-                <button className={styles.deleteButton}
+                <button
                   type="button"
+                  className={styles.deleteButton}
                   onClick={() => this.handleDelete(contact.id)}
                 >
                   Delete

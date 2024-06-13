@@ -1,36 +1,68 @@
-.form {
+.form,
+.searchForm {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 1rem;
-    gap: .75rem;
-    font-size: 1.5rem;
-    border: 1px solid slategray;
-    border-radius: 1rem;
+    align-items: center;
+    margin: 20px auto;
+}
 
-    input, button {
-    font-size: inherit;
-    }
+.form label,
+.searchForm label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form input,
+.searchForm input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.form button,
+.deleteButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.form button:hover,
+.deleteButton:hover {
+    background-color: #218838;
+}
+
+.deleteButton {
+    background-color: #ff4d4d;
+    margin-left: 10px;
+}
+
+.deleteButton:hover {
+    background-color: #ff1a1a;
 }
 
 .list {
-    font-size: 1.5rem;
+    list-style: none;
+    padding: 0;
+    text-align: center;
 }
-.deleteButton {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 
-    &:hover {
-        background-color: #ff1a1a;
-    }
+.list li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
 
-    &:focus {
-        outline: none;
-    }
+h1 {
+    text-align: center;
 }
